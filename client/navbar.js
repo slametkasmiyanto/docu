@@ -1,5 +1,6 @@
 Template.navbar.events({
-    "click .keluar-menu": function(e){
+    "click .keluar-menu": function(event){
+        event.preventDefault();
         Meteor.logout(function(err){
             if(err){
                 FlashMessages.sendError(err.reason);

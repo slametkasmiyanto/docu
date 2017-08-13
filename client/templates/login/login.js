@@ -1,5 +1,6 @@
 Template.login.events({
     "submit .form-signin": function(event){
+        event.preventDefault();
         var email = trimInput(event.target.email.value);
         var password = trimInput(event.target.password.value);
         
