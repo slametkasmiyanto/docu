@@ -7,7 +7,7 @@ Template.register.events({
         var nama = trimInput(event.target.nama.value);
         //var namaBelakang = trimInput(event.target.namaBelakang.value);
         
-        if(password == password2){
+        if(password === password2){
             Accounts.createUser({
                 email: email,
                 password: password,
@@ -17,7 +17,7 @@ Template.register.events({
                 }
             }, function(err){
                 if(err){
-                    FlashMessages.sendError("Ada kesalahan dalam pembuatan Akun.")
+                    FlashMessages.sendError(err.reason)
                 } else {
                     FlashMessages.sendSuccess("Pembuatan Akun berhasil.")
                     Router.go('/');

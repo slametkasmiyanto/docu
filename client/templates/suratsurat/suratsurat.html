@@ -1,0 +1,70 @@
+<template name="suratsurat">
+    {{#if currentUser}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Surat</h3>
+        </div>
+        <div class="panel-body">
+            Panel content
+        </div>
+        <div class="panel-footer">Panel footer</div>
+    </div>  
+    {{else}}
+        <h3>Sistem Berbagi Dokumen</h3>
+    {{/if}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="suratsuratModal" tabindex="-1" role="dialog" aria-labelledby="suratsuratModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="suratsuratModal">Unggah Surat</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="unggahSuratForm">
+                        <div class="form-group col-md-6">
+                            <label>Tanggal</label>
+                            <input type="date" id="tanggal" class="form-control" name="tanggal" placeholder="Tanggal">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>No. Surat</label>
+                            <input type="text" id="nomor" class="form-control" name="nomor" placeholder="Nomor">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Perihal</label>
+                            <input type="text" id="perihal" class="form-control" name="perihal" placeholder="Perihal">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Kategori</label>
+                            <select type="text" id="kategori" class="form-control" name="kategori">
+                                    <option value="biasa">Biasa</option>
+                                    <option value="penting">Penting</option>
+                                    <option value="mendesak">Mendesak</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Sifat</label>
+                            <select type="text" id="sifat" class="form-control" name="sifat">
+                                    <option value="umum">Umum</option>
+                                    <option value="terbatas">Terbatas</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Tujuan</label>
+                            <select type="text" id="tujuan" class="form-control" name="tujuan">
+                                    <option value="sekolah-1">Sekolah-1</option>
+                                    <option value="sekolah-1">Sekolah-2</option>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Pesan</label>
+                            <textarea id="pesan" class="form-control" name="pesan"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Unggah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,3 +1,12 @@
+/*Template.navbar.helpers({
+    "userEmail": function(){
+        return Meteor.user().emails[0].address;
+    },
+    "namaUser": function(){
+        return Meteor.user().profile.nama;
+    },
+});*/
+
 Template.navbar.events({
     "click .keluar-menu": function(event){
         event.preventDefault();

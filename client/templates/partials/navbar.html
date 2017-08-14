@@ -1,5 +1,5 @@
 <template name="navbar">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -13,12 +13,12 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Beranda</a></li>
+                    <li><a href="{{pathFor 'suratsurat'}}">Beranda</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#suratsuratModal">Surat-surat</a></li>
                     <li class="keluar-menu"><a href="#">Keluar</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
     </nav>
-
 </template>

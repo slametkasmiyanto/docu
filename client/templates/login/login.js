@@ -11,7 +11,8 @@ Template.login.events({
                     FlashMessages.sendError(err.reason);
                 } else {
                     FlashMessages.sendSuccess("Anda berhasil masuk ke sistem");
-                    Router.go('/dashboard');
+                    //Router.go('/dashboard');
+                    Router.go('/suratsurat');
                 }
             }
         )
