@@ -1,16 +1,48 @@
-<template name="suratsurat">
+<template name= "suratsurat">
     {{#if currentUser}}
-    <div class="panel panel-default">
+    <div class="panel panel-default panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Surat</h3>
+            <h3 class="panel-title"><strong>Daftar Berkas</strong></h3>
         </div>
         <div class="panel-body">
-            Panel content
+            
         </div>
-        <div class="panel-footer">Panel footer</div>
+         <!-- Table -->
+         <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>No. Surat</th>
+                    <th>Perihal</th>
+                    <th>Kategori</th>
+                    <th>Sifat</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each suratsurat}}
+                    <tr>
+                        <td>{{tanggal}}</td>
+                        <td>{{nomor}}</td>
+                        <td><a href="/surat/{{_id}}">{{perihal}}</a></td>
+                        <td>{{kategori}}</td>
+                        <td>{{sifat}}</td>
+                        <td>{{status}}</td>
+                        <td><a href="#" class="btn btn-danger btn-tiny ubahStatusSurat">Ubah Status</a></td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{#if jmlsuratsurat}}
+            <div class="panel-footer">Total: {{jmlsuratsurat}} berkas</div>
+        {{else}}
+            <div class="panel-footer">Anda tidak memiliki berkas</div>
+        {{/if}}
     </div>  
     {{else}}
-        <h3>Sistem Berbagi Dokumen</h3>
+        <h3>GreenDoku - Sistem Berbagi Dokumen</h3>
+        <p>Silakan masuk ke dalam sistem dengan menggunakan akun Anda.</p>
+
     {{/if}}
 
     <!-- Modal -->
@@ -19,10 +51,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="suratsuratModal">Unggah Surat</h4>
+                    <h4 class="modal-title" id="suratsuratModalTitle">Unggah Surat</h4>
                 </div>
                 <div class="modal-body">
-                    <form name="unggahSuratForm">
+                    <form class="unggahSuratForm">
                         <div class="form-group col-md-6">
                             <label>Tanggal</label>
                             <input type="date" id="tanggal" class="form-control" name="tanggal" placeholder="Tanggal">
@@ -61,7 +93,7 @@
                             <label>Pesan</label>
                             <textarea id="pesan" class="form-control" name="pesan"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Unggah</button>
+                        <button type="submit" class="btn btn-primary">Unggah</button>
                     </form>
                 </div>
             </div>
