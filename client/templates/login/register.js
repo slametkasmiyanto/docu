@@ -5,7 +5,7 @@ Template.register.events({
         var password = trimInput(event.target.password.value);
         var password2 = trimInput(event.target.password2.value);
         var nama = trimInput(event.target.nama.value);
-        //var namaBelakang = trimInput(event.target.namaBelakang.value);
+        var grup = trimInput(event.target.grup.value);
         
         if(password === password2){
             Accounts.createUser({
@@ -13,7 +13,7 @@ Template.register.events({
                 password: password,
                 profile: {
                     nama: nama,
-                    //nama_belakang: namaBelakang
+                    usertype: grup,
                 }
             }, function(err){
                 if(err){

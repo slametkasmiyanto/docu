@@ -1,5 +1,6 @@
 Template.suratsurat.events({
     "submit .unggahSuratForm": function(event){
+        event.preventDefault();
         var tanggal = trimInput(event.target.tanggal.value);
         var nomor = trimInput(event.target.nomor.value);
         var perihal = trimInput(event.target.perihal.value);
@@ -8,6 +9,7 @@ Template.suratsurat.events({
         var tujuan = trimInput(event.target.tujuan.value);
         var pesan = trimInput(event.target.pesan.value);
         var status = "New";
+        
 
         SuratSurat.insert({
             tanggal: tanggal,
@@ -23,8 +25,17 @@ Template.suratsurat.events({
         });
 
         $('#suratsuratModal').modal('hide');
-        FlashMessages.sendSuccess("Surat berhasil diunggah.");
+        //FlashMessages.sendSuccess("Berkas berhasil diunggah.");
         return false;
+    },
+
+    'click .ubahStatus': function(){
+
+        if(confirm("Ubah status berkas?")){
+            SuratSurat.update({_id : this._id},{$set: {status : "Progress"}});
+            
+            return false;
+        }
     }
 });
 

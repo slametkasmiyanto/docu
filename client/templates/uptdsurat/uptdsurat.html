@@ -1,0 +1,42 @@
+<template name="uptdsurat">
+    <div class="panel panel-default panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>Kelola Berkas</strong></h3>
+        </div>
+        <div class="panel-body">
+
+        </div>
+        <!-- Table -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>No. Surat</th>
+                    <th>Perihal</th>
+                    <th>Kategori</th>
+                    <th>Sifat</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each suratsurat}}
+                <tr>
+                    <td>{{tanggal}}</td>
+                    <td>{{nomor}}</td>
+                    <td><a href="/surat/{{_id}}">{{perihal}}</a></td>
+                    <td>{{kategori}}</td>
+                    <td>{{sifat}}</td>
+                    <td>{{status}}</td>
+                    <td><a href="#" class="btn btn-danger btn-tiny ubahStatus">Ubah Status</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{#if jmlsuratsurat}}
+        <div class="panel-footer">Total: {{jmlsuratsurat}} berkas</div>
+        {{else}}
+        <div class="panel-footer">Tidak ada berkas</div>
+        {{/if}}
+    </div>
+
+</template>
