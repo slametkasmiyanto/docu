@@ -1,17 +1,20 @@
 <template name= "suratsurat">
+    
     {{#if currentUser}}
-    <div class="panel panel-default panel-primary">
+    <div class="panel panel-default panel-success panel-tabel-masuk">
         <div class="panel-heading">
-            <h3 class="panel-title"><strong>Daftar Berkas</strong></h3>
+            <h3 class="panel-title"><strong>Daftar Berkas Masuk</strong></h3>
         </div>
         <div class="panel-body">
             
         </div>
-         <!-- Table -->
+         <!-- Table Masuk -->
          <table class="table table-hover">
             <thead>
                 <tr>
                     <th>Tanggal</th>
+                    <th>Pengirim</th>
+                    <th>Tujuan</th>
                     <th>No. Surat</th>
                     <th>Perihal</th>
                     <th>Kategori</th>
@@ -20,9 +23,11 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each suratsurat}}
+                {{#each suratMasuk}}
                     <tr>
                         <td>{{tanggal}}</td>
+                        <td>{{pengirimNama}}</td>
+                        <td>{{tujuanNama}}</td>
                         <td>{{nomor}}</td>
                         <td><a href="/surat/{{_id}}">{{perihal}}</a></td>
                         <td>{{kategori}}</td>
@@ -33,16 +38,62 @@
                 {{/each}}
             </tbody>
         </table>
-        {{#if jmlsuratsurat}}
-            <div class="panel-footer">Total: {{jmlsuratsurat}} berkas</div>
+        {{#if jmlsuratMasuk}}
+            <div class="panel-footer"><strong>Total: {{jmlsuratMasuk}} berkas</strong></div>
         {{else}}
-            <div class="panel-footer">Anda tidak memiliki berkas</div>
+            <div class="panel-footer"><strong>Anda tidak memiliki berkas</strong></div>
         {{/if}}
-    </div>  
+    </div>
+    
+    <!-- Tabel berkas keluar -->
+    <div class="panel panel-default panel-success panel-tabel-keluar">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Daftar Berkas Keluar</strong></h3>
+            </div>
+            <div class="panel-body">
+                
+            </div>
+             <!-- Table -->
+             <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Pengirim</th>
+                        <th>Tujuan</th>
+                        <th>No. Surat</th>
+                        <th>Perihal</th>
+                        <th>Kategori</th>
+                        <th>Sifat</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each suratsurat}}
+                        <tr>
+                            <td>{{tanggal}}</td>
+                            <td>{{pengirimNama}}</td>
+                            <td>{{tujuanNama}}</td>
+                            <td>{{nomor}}</td>
+                            <td><a href="/surat/{{_id}}">{{perihal}}</a></td>
+                            <td>{{kategori}}</td>
+                            <td>{{sifat}}</td>
+                            <td>{{status}}</td>
+                            <td><a href="#" class="btn btn-danger btn-tiny ubahStatus">Ubah Status</a></td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{#if jmlsuratsurat}}
+                <div class="panel-footer"><strong>Total: {{jmlsuratsurat}} berkas</strong></div>
+            {{else}}
+                <div class="panel-footer"><strong>Anda tidak memiliki berkas</strong></div>
+            {{/if}}
+        </div> 
+   
+        <!-- End of tabel berkas keluar -->
     {{else}}
         <h3>GreenDoku - Sistem Berbagi Dokumen</h3>
         <p>Silakan masuk ke dalam sistem dengan menggunakan akun Anda.</p>
-
     {{/if}}
 
     <!-- Modal -->
@@ -54,23 +105,23 @@
                     <h4 class="modal-title" id="suratsuratModalTitle">Unggah Surat</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="unggahSuratForm">
+                    <form class="unggahSuratForm" method="post">
                         <div class="form-group col-md-6">
                             <label>Tanggal</label>
-                            <input type="date" id="tanggal" class="form-control" name="tanggal" placeholder="Tanggal">
+                            <input required type="date" id="tanggal" class="form-control" name="tanggal" placeholder="Tanggal">
                         </div>
                         <div class="form-group col-md-6">
                             <label>No. Surat</label>
-                            <input type="text" id="nomor" class="form-control" name="nomor" placeholder="Nomor">
+                            <input required type="text" id="nomor" class="form-control" name="nomor" placeholder="Nomor">
                         </div>
                         <div class="form-group col-md-12">
                             <label>Perihal</label>
-                            <input type="text" id="perihal" class="form-control" name="perihal" placeholder="Perihal">
+                            <input required type="text" id="perihal" class="form-control" name="perihal" placeholder="Perihal">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Kategori</label>
                             <select type="text" id="kategori" class="form-control" name="kategori">
-                                    <option value="Biasa">Biasa</option>
+                                    <option value="Biasa" selected>Biasa</option>
                                     <option value="Penting">Penting</option>
                                     <option value="Mendesak">Mendesak</option>
                                 </select>
@@ -78,17 +129,19 @@
                         <div class="form-group col-md-6">
                             <label>Sifat</label>
                             <select type="text" id="sifat" class="form-control" name="sifat">
-                                    <option value="Umum">Umum</option>
+                                    <option value="Umum" selected>Umum</option>
                                     <option value="Terbatas">Terbatas</option>
                                 </select>
                         </div>
+                        <!--
                         <div class="form-group col-md-12">
-                            <label>Tujuan</label>
+                            <label>Tujuan {{userType}}</label>
                             <select type="text" id="tujuan" class="form-control" name="tujuan">
-                                    <option value="Sekolah-1">Sekolah-1</option>
+                                    <option value="Sekolah-1" selected>Sekolah-1</option>
                                     <option value="Sekolah-2">Sekolah-2</option>
                                 </select>
                         </div>
+                    -->
                         <div class="form-group col-md-12">
                             <label>Pesan</label>
                             <textarea id="pesan" class="form-control" name="pesan"></textarea>

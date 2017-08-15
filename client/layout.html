@@ -3,16 +3,23 @@
 </body>
 
 <template name="layout">
+    <!--{{> navbar1}}-->
     {{> navbar}}
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h3>SIDE NAV</h3>
-            </div>
-            <div class="col-md-9">
+        <div class="row" style="margin-top:60px;padding-top:10px;padding-bottom:10px;">
+ <!--           <div class="col-md-3">
+                {{> sidenav}}
+            </div>-->
+            <div class="col-md-12" style="padding:100px;">
                 {{> flashMessages}}
                 {{> yield}}
             </div>
+        </div>
+        <div class="row" style="margin-top:19px;padding-top:0px;padding-bottom:20px;">
+
+        </div>
+        <div class="col-md-12" style="padding:5px;">
+
         </div>
     </div>
     <!-- /container -->

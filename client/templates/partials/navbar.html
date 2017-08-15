@@ -1,24 +1,20 @@
 <template name="navbar">
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default navigation-clean navbar-fixed-top" style="background-color:#dfe8ee;">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                <a class="navbar-brand" href="#"><strong>Green</strong>Doku</a>
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/"><strong>Green</strong>Doku </a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{pathFor 'suratsurat'}}">Beranda</a></li>
-                    <li><a href="" data-toggle="modal" data-target="#suratsuratModal">Unggah Berkas</a></li>
-                    <li class="keluar-menu"><a href="#">Keluar</a></li>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="{{pathFor 'suratsurat'}}">Berkas-berkas</a></li>
+                    <li role="presentation"><a href="" data-toggle="modal" data-target="#suratsuratModal">Unggah Berkas</a></li>                    
+                    <li role="presentation"><a href="#">Pengaturan </a></li>
+                    <li class="keluar-menu" role="presentation"><a href="#" class="navbar-link">Akun: <strong>{{namaUser}}</strong></a></li>
                 </ul>
+                <!--<p class="navbar-text navbar-right keluar-menu">
+                    Akun:  <a href="#" class="navbar-link">{{emailUser}}</a>
+                </p>-->
             </div>
-            <!--/.nav-collapse -->
         </div>
     </nav>
 </template>

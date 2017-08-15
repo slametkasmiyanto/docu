@@ -1,3 +1,13 @@
+Template.suratsurat.helpers({
+    'namaSekolah': function(){
+        //return Meteor.user().emails[0].address;
+        return this.profile.nama;
+    }
+
+
+});
+
+
 Template.suratsurat.events({
     "submit .unggahSuratForm": function(event){
         event.preventDefault();
@@ -6,10 +16,11 @@ Template.suratsurat.events({
         var perihal = trimInput(event.target.perihal.value);
         var kategori = trimInput(event.target.kategori.value);
         var sifat = trimInput(event.target.sifat.value);
-        var tujuan = trimInput(event.target.tujuan.value);
+        //var tujuanId = trimInput(event.target.tujuan.value);
         var pesan = trimInput(event.target.pesan.value);
         var status = "New";
-        
+        var pengirimNama = Meteor.user().profile.nama;
+        var tujuanId = "admin";
 
         SuratSurat.insert({
             tanggal: tanggal,
@@ -17,9 +28,11 @@ Template.suratsurat.events({
             perihal: perihal,
             kategori: kategori,
             sifat: sifat,
-            tujuan: tujuan,
+            tujuanId: tujuanId,
+            //tujuanNama: Meteor.user().profile.nama,
             pesan: pesan,
-            pengirim: Meteor.userId(),
+            pengirimId: Meteor.userId(),
+            pengirimNama: pengirimNama,
             createdAt: new Date(),
             status: status,
         });
@@ -36,7 +49,21 @@ Template.suratsurat.events({
             
             return false;
         }
-    }
+    },
+
+    /*'click .tabel-berkas-masuk': function(event){
+        $('.panel-tabel-keluar').hide();
+        $('.btn-tabel-masuk').hide();
+        $('.btn-tabel-keluar').show();
+        $('.panel-tabel-masuk').show();
+    },
+    'click .tabel-berkas-keluar': function(event){
+        $('.panel-tabel-masuk').hide();
+        $('.btn-tabel-keluar').hide();
+        $('.btn-tabel-masuk').show();
+        $('.panel-tabel-keluar').show();
+    }*/
+
 });
 
 var trimInput = function(val){

@@ -1,14 +1,17 @@
-/*Template.navbar.helpers({
-    "userEmail": function(){
-        return Meteor.user().emails[0].address;
-    },
-    "namaUser": function(){
+Template.navbar.helpers({
+    'namaUser': function(){
+        if(Meteor.user()){
+            //return Meteor.user().emails[0].address;
+            return Meteor.user().profile.nama;
+        }
+    }
+    /*"namaUser": function(){
         return Meteor.user().profile.nama;
-    },
-});*/
+    },*/
+});
 
 Template.navbar.events({
-    "click .keluar-menu": function(event){
+    'click .keluar-menu': function(event){
         event.preventDefault();
         Meteor.logout(function(err){
             if(err){

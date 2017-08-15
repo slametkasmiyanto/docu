@@ -22,12 +22,11 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 twbs:bootstrap
 momentjs:moment
 mrt:flash-messages
-#cfs:gridfs
-#cfs:standard-packages
+cfs:gridfs
+cfs:standard-packages
 accounts-ui
 accounts-password
 iron:router
-#raix:ui-dropped-event
-#peppelg:bootstrap-3-modal
-#ian:accounts-ui-bootstrap-3
 aldeed:collection2
+peppelg:bootstrap-3-modal
+raix:ui-dropped-event

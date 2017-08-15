@@ -5,7 +5,7 @@ Template.registerHelper('isSekolah', function(){
 });
 
 Template.registerHelper('isUPTD', function(){
-    if(Meteor.user().profile.usertype == 'uptd'){
+    if(Meteor.user().profile.usertype == 'admin'){
         return true;
     }
 });
